@@ -13,9 +13,11 @@
 
   <section>
     <h1>Github Repositories</h1>
-    <% @facade.repos.each do |repo|  %>
+            <% @facade.repos.each do |repo|  %>
+  <div class="repo">
   Repo Name:<%= repo.name  %>
-  Url:<%= repo.url  %>
-    <% end  %>
+        Url:<%= repo.url  %>
+  </div>
+            <% end  %>
   </section>
 </section>
