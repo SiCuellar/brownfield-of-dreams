@@ -11,7 +11,7 @@ class DashboardFacade
   end
 
   def service
-    GithubService.new({oath_key: ENV["github_key"]})
+    GithubService.new({oath_key: 5})
   end
 
   def search_result
