@@ -3,9 +3,9 @@ require 'rails_helper'
 describe 'User' do
 
   it 'user can see github repos on dashboard' do
-    stub_request(:get, "https://api.github.com/user/repos").
-      with(headers: { 'Authorization' => "token 5" }).
+    stub_request(:any, "https://api.github.com/user/repos").
     to_return(body: File.read("./spec/fixtures/github_repos.json"))
+
     user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user) {user}
@@ -19,6 +19,4 @@ describe 'User' do
       expect(page).to have_content("Url:")
     end
   end
-
-
 end
