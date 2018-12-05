@@ -19,4 +19,12 @@ describe 'User' do
       expect(page).to have_content("Url:")
     end
   end
+
+  # it "user can't see repos without a token " do
+  #   user = create(:user)
+  #
+  #   allow_any_instance_of(ApplicationController).to receive(:current_user) {user}
+  #
+  #   user.github_credential
+  # end
 end

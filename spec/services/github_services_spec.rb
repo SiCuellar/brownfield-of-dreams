@@ -11,4 +11,6 @@ describe GithubService do
       expect(service.response_repos[0]).to have_key(:full_name)
     end
   end
+
+  
 end

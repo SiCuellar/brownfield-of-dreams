@@ -117,5 +117,4 @@ m3_tutorial.videos.create!({
 
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
 user = User.create!(email: 'user@example.com', first_name: 'Napo', last_name: 'Cacti', password:  "password", role: :default)
-binding.pry
-user.github_credential.create(key: ENV['github_key'])
+GithubCredential.create!(key: ENV['github_key'], user_id: user.id )
