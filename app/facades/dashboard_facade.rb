@@ -5,7 +5,7 @@ class DashboardFacade
   end
 
   def repos
-    search_result[:repos].map do |repo_data|
+    search_result.map do |repo_data|
       Repo.new(repo_data)
     end
   end
@@ -15,6 +15,6 @@ class DashboardFacade
   end
 
   def search_result
-    @_search_result ||= service.repos
+    @_search_result ||= service.response_repos
   end
 end

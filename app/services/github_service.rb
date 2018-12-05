@@ -3,7 +3,7 @@ class GithubService
     @oath_key = params[:oath_key]
   end
 
-  def repos
+  def response_repos
     get_json("/user/repos")
   end
 
