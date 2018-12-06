@@ -11,6 +11,7 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
+  <% if @facade.repos  %>
   <section>
     <h1>Github Repositories</h1>
             <% @facade.repos.each do |repo|  %>
@@ -20,4 +21,5 @@
   </div>
             <% end  %>
   </section>
+  <% end %>
 </section>
