@@ -18,7 +18,10 @@ describe 'User' do
       expect(page).to have_css(".repo")
       expect(page).to have_content("Repo Name:")
       expect(page).to have_content("Url:")
+      click_on 'http://'
+      expect(current_url).to include('www.github.com/')
     end
+
   end
 
   it "user can't see other users repos " do

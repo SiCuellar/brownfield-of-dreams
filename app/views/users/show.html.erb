@@ -25,10 +25,10 @@
     <% if @facade.repos  %>
     <section>
       <h3>Repositories</h3>
-              <% @facade.repos.each do |repo|  %>
+              <% @facade.repos.first(5).each do |repo|  %>
     <div class="repo">
     Repo Name:<%= repo.name  %>
-          Url:<%= repo.url  %>
+          Url: <a href="<%= repo.url  %>"> <%= repo.url %></a>
     </div>
               <% end  %>
     </section>
