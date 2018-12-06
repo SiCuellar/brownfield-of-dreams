@@ -25,6 +25,16 @@ class DashboardFacade
     end
   end
 
+  def following
+    if @current_user.token
+      search_result.response_followings.map do |follower_data|
+        Follower.new(follower_data)
+      end
+    else
+      nil
+    end
+  end
+
   def service
     GithubService.new({ :oath_key => @current_user.token })
   end
