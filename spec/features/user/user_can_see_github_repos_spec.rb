@@ -4,7 +4,7 @@ describe 'User' do
 
   it 'user can see github repos on dashboard' do
     stub_request(:any, "https://api.github.com/user/repos").
-      with(headers: { 'Authorization' => "abc"}).
+      with(headers: { 'Authorization' => "token abc"}).
     to_return(body: File.read("./spec/fixtures/github_repos.json"))
 
     user = create(:user, token: "abc")
