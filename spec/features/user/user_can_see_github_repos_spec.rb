@@ -21,11 +21,29 @@ describe 'User' do
     end
   end
 
-  xit "user can't see repos without a token " do
-    user = create(:user)
+  it "user can't see other users repos " do
+    user_1 = create(:user, token: "abc")
+    user_2 = create(:user, token: "xyz")
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user) {user}
+    allow_any_instance_of(ApplicationController).to receive(:current_user) {user_1}
 
-    user.github_credential
+    stub = stub_request(:any, "https://api.github.com/user/repos").
+      with(headers: { 'Authorization' => "token xyz"}).
+    to_return(body: File.read("./spec/fixtures/github_repos.json"))
+
+    expect{ visit(dashboard_path) }.to  raise_error(ActionView::Template::Error)
+  end
+
+  it "user can't see repos without token " do
+    user_1 = create(:user, token: "abc")
+    user_2 = create(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user) {user_2}
+
+    visit(dashboard_path)
+
+    expect(page).to_not have_css(".repo")
+    expect(page).to_not have_content("Repo Name:")
+    expect(page).to_not have_content("Url:")
   end
 end

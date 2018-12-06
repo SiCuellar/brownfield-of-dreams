@@ -6,8 +6,12 @@ class DashboardFacade
   end
 
   def repos
-    search_result.map do |repo_data|
-      Repo.new(repo_data)
+    if @current_user.token
+      search_result.map do |repo_data|
+        Repo.new(repo_data)
+      end
+    else
+      nil
     end
   end
 
