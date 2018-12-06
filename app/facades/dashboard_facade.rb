@@ -5,6 +5,7 @@ class DashboardFacade
   end
 
   def repos
+    binding.pry
     search_result.map do |repo_data|
       Repo.new(repo_data)
     end
