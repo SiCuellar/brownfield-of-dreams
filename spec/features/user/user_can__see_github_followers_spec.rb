@@ -15,8 +15,9 @@ RSpec.describe 'User github followers section 'do
     expect(page).to have_css(".followers")
     all(".follower").first do
       expect(page).to have_css(".follower")
-      expect(page).to have_content("Name: ")
       expect(page).to have_content("Username: ")
+      click_on ("Username: ")
+      expect(current_url).to include("www.github.com")
     end
 
   end

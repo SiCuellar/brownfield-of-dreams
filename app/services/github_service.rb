@@ -7,8 +7,8 @@ class GithubService
     get_json("/user/repos")
   end
 
-  def method_name
-
+  def response_followers
+    get_json("/user/followers")
   end
 
   private
