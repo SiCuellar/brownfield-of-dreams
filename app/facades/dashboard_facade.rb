@@ -7,8 +7,28 @@ class DashboardFacade
 
   def repos
     if @current_user.token
-      search_result.map do |repo_data|
+      search_result.response_repos.map do |repo_data|
         Repo.new(repo_data)
+      end
+    else
+      nil
+    end
+  end
+
+  def followers
+    if @current_user.token
+      search_result.response_followers.map do |follower_data|
+        Follower.new(follower_data)
+      end
+    else
+      nil
+    end
+  end
+
+  def following
+    if @current_user.token
+      search_result.response_followings.map do |follower_data|
+        Follower.new(follower_data)
       end
     else
       nil
@@ -20,6 +40,6 @@ class DashboardFacade
   end
 
   def search_result
-    @_search_result ||= service.response_repos
+    @_search_result ||= service
   end
 end
