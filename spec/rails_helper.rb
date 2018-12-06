@@ -15,6 +15,7 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
   config.allow_http_connections_when_no_cassette = true
+  config.filter_sensitive_data("<GITHUB_API_KEY>") { ENV['github_key']}
 end
 
 
