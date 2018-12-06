@@ -15,6 +15,14 @@ class DashboardFacade
     end
   end
 
+  def followers
+    if @current_user.token
+
+    else
+      nil
+    end
+  end
+
   def service
     GithubService.new({ :oath_key => @current_user.token })
   end

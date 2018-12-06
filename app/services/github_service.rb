@@ -7,6 +7,10 @@ class GithubService
     get_json("/user/repos")
   end
 
+  def method_name
+
+  end
+
   private
 
   def get_json(path)

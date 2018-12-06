@@ -11,15 +11,28 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <% if @facade.repos  %>
-  <section>
-    <h1>Github Repositories</h1>
-            <% @facade.repos.each do |repo|  %>
-  <div class="repo">
-  Repo Name:<%= repo.name  %>
-        Url:<%= repo.url  %>
-  </div>
-            <% end  %>
+  <section class="github">
+    <h2> Github </h2>
+
+    <% if @facade.followers %>
+      <h3>Followers</h3>
+      <% @facade.followers.each do |follower| %>
+        follower.name
+        follower.url
+      <% end %>
+    <% end %>
+
+    <% if @facade.repos  %>
+    <section>
+      <h3>Repositories</h3>
+              <% @facade.repos.each do |repo|  %>
+    <div class="repo">
+    Repo Name:<%= repo.name  %>
+          Url:<%= repo.url  %>
+    </div>
+              <% end  %>
+    </section>
+    <% end %>
+
   </section>
-  <% end %>
 </section>
