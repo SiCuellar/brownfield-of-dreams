@@ -2,18 +2,6 @@ require 'rails_helper'
 RSpec.describe 'User' do
   it 'can connect to github' do
 
-    stub_request(:any, "https://api.github.com/user/repos").
-      with(headers: { 'Authorization' => "token abc"}).
-    to_return(body: File.read("./spec/fixtures/github_repos.json"))
-
-    stub_request(:any, "https://api.github.com/user/followers").
-      with(headers: { 'Authorization' => "token abc"}).
-    to_return(body: File.read("./spec/fixtures/github_followers.json"))
-
-    stub_request(:any, "https://api.github.com/user/following").
-      with(headers: { 'Authorization' => "token abc"}).
-    to_return(body: File.read("./spec/fixtures/github_following.json"))
-
     stub_omniauth
     user_1 = create(:user)
 
