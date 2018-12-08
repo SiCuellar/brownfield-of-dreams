@@ -6,34 +6,34 @@ class DashboardFacade
   end
 
   def repos
-    if response_valid?(search_result.response_repos)
+    if @current_user.token && valid_response?(search_result.response_repos)
       search_result.response_repos.map do |repo_data|
         Repo.new(repo_data)
       end
     else
-      []
+      nil
     end
   end
 
 
 
   def followers
-    if response_valid?(search_result.response_followers)
+    if @current_user.token && valid_response?(search_result.response_followers)
       search_result.response_followers.map do |follower_data|
         Follower.new(follower_data)
       end
     else
-      []
+      nil
     end
   end
 
   def following
-    if response_valid?(search_result.response_followings)
+    if @current_user.token && valid_response?(search_result.response_followings)
       search_result.response_followings.map do |follower_data|
         Follower.new(follower_data)
       end
     else
-      []
+      nil
     end
   end
 
@@ -47,7 +47,7 @@ class DashboardFacade
 
   private
 
-  def response_valid?(response)
+  def valid_response?(response)
     if response.class == Array
       true
     else
