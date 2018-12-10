@@ -13,10 +13,15 @@ RSpec.describe 'User' do
 
     expect(user_1.token).to eq('12345')
     expect(page).to have_content('Github Information')
+    close_test
   end
 
   def stub_omniauth
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({'credentials' => {'token' => '12345'}})
+  end
+
+  def close_test
+    OmniAuth.config.test_mode = false
   end
 end

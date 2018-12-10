@@ -31,10 +31,15 @@
 
     <% if @facade.followers %>
     <h2>Followers</h2>
-    <section class="followers"
+    <section class="followers">
       <%@facade.followers.each do |follower|  %>
       <div class="follower">
-      User Name:<a href="<%= follower.url  %>" class="user-link"> <%= follower.login %></a>
+        User Name:<a href="<%= follower.url  %>" class="user-link"> <%= follower.login %></a>
+        <% if follower.friendable? %>
+      </br><%= link_to "Add as Friend", new_friendship_path(:follower_uid => follower.uid), method: :post %>
+        <% end %>
+      </br>
+      </br>
       </div>
       <% end %>
       </section>
@@ -42,10 +47,16 @@
 
     <% if @facade.following %>
     <h2>Following</h2>
-    <section class="following"
+    <section class="following">
       <%@facade.following.each do |follower|  %>
+
       <div class="follower">
       User Name:<a href="<%= follower.url  %>" class="user-link"> <%= follower.login %></a>
+        <% if follower.friendable? %>
+      </br> <%= link_to "Add as Friend", new_friendship_path, method: :post %>
+        <% end %>
+        </br>
+        </br>
       </div>
       <% end %>
       </section>
