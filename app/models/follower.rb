@@ -8,4 +8,9 @@ class Follower
     @url = followers_data[:html_url]
     @uid = followers_data[:id]
   end
+
+  def friendable?
+    return true if User.find_by(uid: @uid)
+    false
+  end
 end

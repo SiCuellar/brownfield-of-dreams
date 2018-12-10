@@ -21,14 +21,7 @@ describe "User " do
     allow_any_instance_of(ApplicationController).to receive(:current_user) {user_1}
 
     visit dashboard_path
-    save_and_open_page
 
-    within("User-#{user_2.id}") do
-      expect(page).to have_button("Follow User")
-    end
-
-    within("User-#{user_3.id}") do
-      expect(page).to_not have_button("Follow User")
-    end
+    expect(page).to have_link("Add as Friend")
   end
 end

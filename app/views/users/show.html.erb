@@ -35,9 +35,11 @@
       <%@facade.followers.each do |follower|  %>
       <div class="follower">
         User Name:<a href="<%= follower.url  %>" class="user-link"> <%= follower.login %></a>
-        <% if follower.uid %>
-          <% link_to "Add as Friend", new_friendship_path %>
+        <% if follower.friendable? %>
+          </br><%= link_to "Add as Friend", new_friendship_path %>
         <% end %>
+      </br>
+      </br>
       </div>
       <% end %>
       </section>
@@ -50,9 +52,11 @@
 
       <div class="follower">
       User Name:<a href="<%= follower.url  %>" class="user-link"> <%= follower.login %></a>
-        <% if follower.uid %>
-          <% link_to "Add as Friend", new_friendship_path %>
+        <% if follower.friendable? %>
+          </br> <%= link_to "Add as Friend", new_friendship_path %>
         <% end %>
+        </br>
+        </br>
       </div>
       <% end %>
       </section>
