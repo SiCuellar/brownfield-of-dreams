@@ -16,5 +16,6 @@ class User < ApplicationRecord
   def add_friend(friend_uid)
     new_bff = User.find_by(uid: friend_uid)
     self.friends << new_bff
+    self.save
   end
 end
