@@ -25,7 +25,7 @@ describe "User " do
     expect(page).to have_link("Add as Friend")
   end
 
-  it "user can see link to existing github friends" do
+  it "user can add friend" do
     stub_request(:any, "https://api.github.com/user/repos").
       with(headers: { 'Authorization' => "token abc"}).
     to_return(body: File.read("./spec/fixtures/github_repos.json"))
@@ -47,6 +47,12 @@ describe "User " do
 
     within '.followers' do
       click_link 'Add as Friend'
+    end
+
+
+    save_and_open_page
+    within '.friends' do
+      expect(page).to have_content(user_2.first_name)
     end
 
   end
