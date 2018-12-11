@@ -41,4 +41,16 @@ describe 'user can register' do
     expect(current_path).to eq(register_path)
     expect(page).to have_content("Passwords do not match")
   end
+
+  it 'shows activated status' do
+    user = create(:user, status:true)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user) {user}
+
+    visit dashboard_path
+
+    expect(page).to have_content("Status: Active")
+
+
+  end
 end
