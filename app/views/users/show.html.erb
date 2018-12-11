@@ -36,7 +36,7 @@
       <div class="follower">
         User Name:<a href="<%= follower.url  %>" class="user-link"> <%= follower.login %></a>
         <% if follower.friendable? %>
-      </br><%= link_to "Add as Friend", new_friendship_path(:follower_uid => follower.uid), method: :post %>
+      </br><%= link_to "Add as Friend", new_friendship_path(:friend_uid => follower.uid), method: :post %>
         <% end %>
       </br>
       </br>
@@ -53,12 +53,29 @@
       <div class="follower">
       User Name:<a href="<%= follower.url  %>" class="user-link"> <%= follower.login %></a>
         <% if follower.friendable? %>
-      </br> <%= link_to "Add as Friend", new_friendship_path, method: :post %>
+        </br><%= link_to "Add as Friend", new_friendship_path(:friend_uid => follower.uid), method: :post %>
         <% end %>
         </br>
         </br>
       </div>
       <% end %>
+      </section>
+
+      <section class="friends">
+        <h2>Friends</h2>
+
+        <% unless current_user.friends.empty? %>
+        <% current_user.friends.each do |friend| %>
+          <div class="friend" id=user-<%= friend.id %>>
+            <%= friend.first_name %>
+            <%= friend.last_name %>
+            </br>
+          </div>
+        <% end %>
+        <% else %>
+          You have no friends
+        <% end %>
+
       </section>
     <% end %>
 
