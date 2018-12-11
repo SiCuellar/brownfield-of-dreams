@@ -22,7 +22,7 @@ describe "User " do
 
     visit dashboard_path
 
-    expect(page).to have_link("Add as Friend")
+    expect(page).to have_button("Add as Friend")
   end
 
   it "user can add friend" do
@@ -46,16 +46,13 @@ describe "User " do
     visit dashboard_path
 
     within '.followers' do
-      click_link 'Add as Friend'
+      click_button 'Add as Friend'
     end
 
-
-    save_and_open_page
+    expect(current_path).to eq(dashboard_path)
     within '.friends' do
       expect(page).to have_content(user_2.first_name)
     end
-
   end
-
 
 end

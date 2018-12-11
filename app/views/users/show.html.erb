@@ -36,7 +36,7 @@
       <div class="follower">
         User Name:<a href="<%= follower.url  %>" class="user-link"> <%= follower.login %></a>
         <% if follower.friendable? %>
-      </br><%= link_to "Add as Friend", new_friendship_path(:friend_uid => follower.uid), method: :post %>
+      </br><%= button_to "Add as Friend", new_friendship_path(:friend_uid => follower.uid) %>
         <% end %>
       </br>
       </br>
@@ -53,7 +53,7 @@
       <div class="follower">
       User Name:<a href="<%= follower.url  %>" class="user-link"> <%= follower.login %></a>
         <% if follower.friendable? %>
-        </br><%= link_to "Add as Friend", new_friendship_path(:friend_uid => follower.uid), method: :post %>
+      </br><%= button_to "Add as Friend", new_friendship_path(:friend_uid => follower.uid) %>
         <% end %>
         </br>
         </br>
