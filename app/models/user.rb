@@ -14,8 +14,11 @@ class User < ApplicationRecord
   has_secure_password
 
   def add_friend(friend_uid)
-    new_bff = User.find_by(uid: friend_uid)
-    self.friends << new_bff
-    self.save
+    if new_bff = User.find_by(uid: friend_uid)
+      self.friends << new_bff
+      self.save
+    else
+      false
+    end
   end
 end
