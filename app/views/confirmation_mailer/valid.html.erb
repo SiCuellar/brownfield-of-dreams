@@ -3,5 +3,5 @@ Thanks for Joining Turing Tutorials,
 <br>
 Please click the button below to activate your account.
 <br>
-<%= button_to('Validate Account', {:action => "create", :controller => "email_validation"}) %>
+<%= link_to "Activate", controller: "email_validation", action: "create", id: @user.id %>
 <br>
