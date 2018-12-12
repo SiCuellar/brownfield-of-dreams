@@ -1,5 +1,7 @@
 Thanks for Joining Turing Tutorials,
 <%= @user.first_name %>
 <br>
-Please click<a href="<%= @link %>" > here </a>to activate your account.
+Please click the button below to activate your account.
+<br>
+<%= button_to('Validate Account', {:action => "create", :controller => "email_validation"}) %>
 <br>
