@@ -11,16 +11,23 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
+  <section class="bookmarks">
     <h1>Bookmarked Segments</h1>
+    <% @facade.bookmarks.each do |video| %>
+      <div class="bookmark">
+        <%= video.title  %>
+      </div>
+    <% end %>
   </section>
 
 
 <% if current_user.token %>
+<section class="github-info">
   <h1>Github Information</h1>
-  <section class="github-info">
+
     <% if @facade.repos  %>
     <section>
+
       <h2>Github Repositories</h2>
       <% @facade.repos.first(5).each do |repo|  %>
 
@@ -30,7 +37,8 @@
       </div>
       <% end  %>
     </section>
-    <% end %>
+</section>
+<% end %>
 
 
     <% if @facade.followers %>
