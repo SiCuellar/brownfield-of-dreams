@@ -8,13 +8,23 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    if user.save
-      session[:user_id] = user.id
-      redirect_to dashboard_path
+    if params[:user][:password] != params[:user][:password_confirmation]
+      flash[:error] = "Passwords do not match"
+      redirect_to register_path
     else
-      flash[:error] = 'Username already exists'
-      render :new
+      user = User.create(user_params)
+      if user.save
+        session[:user_id] = user.id
+        flash[:alert] = "Logged in as #{user.first_name} #{user.last_name}"
+        flash[:notice] = "This account has not yet been activated. Please check your email."
+
+        ConfirmationMailer.valid(current_user).deliver_now
+
+        redirect_to dashboard_path
+      else
+        flash[:error] = 'Username already exists'
+        render :new
+      end
     end
   end
 
@@ -26,7 +36,7 @@ class UsersController < ApplicationController
       current_user.update!(token: token)
       current_user.update!(uid: uid)
     end
-    
+
     redirect_to dashboard_path
   end
 

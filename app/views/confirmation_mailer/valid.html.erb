@@ -1,0 +1,7 @@
+Thanks for Joining Turing Tutorials,
+<%= @user.first_name %>
+<br>
+Please click the button below to activate your account.
+<br>
+<%= link_to "Activate", controller: "email_validation", action: "create", id: @user.id %>
+<br>
