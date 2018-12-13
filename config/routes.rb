@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   get '/email_validation', to: "email_validation#create"
   get '/thanks_welcome', to: "email_validation#show"
 
+  get '/invite', to: "invite#new"
+  post '/invite', to: "invite#create"
+
 
   get 'auth', to: redirect('/auth/github'), as: 'auth'
   get 'auth/:provider/callback', to: 'users#update'

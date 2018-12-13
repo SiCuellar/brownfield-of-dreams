@@ -15,8 +15,6 @@ class DashboardFacade
     end
   end
 
-
-
   def followers
     if @current_user.token && valid_response?(search_result.response_followers)
       search_result.response_followers.map do |follower_data|
