@@ -23,13 +23,11 @@ describe 'User' do
     visit dashboard_path
 
     expect(current_path).to eq(dashboard_path)
-    within(".github-info") do
       within(".followers") do
         within first(".follower") do
           expect(page).to have_content("User Name:")
           # first(".user-link").click
           # expect(current_url).to include('www.github.com/')
-        end
       end
     end
   end
@@ -55,13 +53,12 @@ describe 'User' do
     visit dashboard_path
 
     expect(current_path).to eq(dashboard_path)
-    within(".github-info") do
+
       within(".following") do
         within first(".follower") do
           expect(page).to have_content("User Name:")
           # first(".user-link").click
           # expect(current_url).to include('www.github.com/')
-        end
       end
     end
   end
