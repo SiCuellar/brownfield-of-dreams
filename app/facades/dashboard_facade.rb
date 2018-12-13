@@ -43,6 +43,10 @@ class DashboardFacade
     @_search_result ||= service
   end
 
+  def bookmarks
+    @current_user.videos.order(:tutorial_id, :position)
+  end
+
   private
 
   def valid_response?(response)
