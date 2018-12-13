@@ -13,4 +13,14 @@ describe 'visitor sees a video show' do
     expect(page).to have_content(video.title)
     expect(page).to have_content(tutorial.title)
   end
+
+  it 'redirects if tutorial is empty' do
+    tutorial = create(:tutorial)
+
+    visit '/'
+
+    click_on tutorial.title
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content("Sorry, This tutorial is empty")
+  end
 end
