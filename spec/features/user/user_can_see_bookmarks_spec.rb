@@ -5,7 +5,6 @@ RSpec.describe 'User' do
   it 'can see bookmarked videos' do
     user = create(:user)
 
-
     allow_any_instance_of(ApplicationController).to receive(:current_user) {user}
     tutorial_1 = create(:tutorial)
     tutorial_2 = create(:tutorial)
@@ -13,15 +12,6 @@ RSpec.describe 'User' do
     video_1 = create(:video, tutorial: tutorial_1, position: 0)
     video_3 = create(:video, tutorial: tutorial_2, position: 1)
     video_2 = create(:video, tutorial: tutorial_1, position: 2)
-
-    # visit(tutorial_path(video_1.tutorial))
-    # click_on 'Bookmark'
-    #
-    # visit(tutorial_path(video_3.tutorial))
-    # click_on 'Bookmark'
-    #
-    # visit(tutorial_path(video_2.tutorial))
-    # click_on 'Bookmark'
 
     user.videos << video_1
     user.videos << video_2
@@ -42,8 +32,5 @@ RSpec.describe 'User' do
     within all('.bookmark')[2] do
       expect(page).to have_content(video_3.title)
     end
-
-
   end
-
 end
