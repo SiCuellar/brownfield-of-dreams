@@ -18,7 +18,11 @@ RSpec.describe 'User' do
 
   def stub_omniauth
     OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({'credentials' => {'token' => '12345'}})
+    response = {'credentials' => {'token' => '12345'},
+                "extra" => {"raw_info" => {"login" => "gusersilver"}}
+                }
+                
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(response)
   end
 
   def close_test

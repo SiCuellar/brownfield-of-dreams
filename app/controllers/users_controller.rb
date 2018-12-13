@@ -31,10 +31,12 @@ class UsersController < ApplicationController
   def update
     token = request.env['omniauth.auth']['credentials']['token']
     uid = request.env['omniauth.auth']['uid']
+    gusername = request.env['omniauth.auth']['extra']['raw_info']['login']
 
     current_user.transaction do
       current_user.update!(token: token)
       current_user.update!(uid: uid)
+      current_user.update!(gusername: gusername)
     end
 
     redirect_to dashboard_path
