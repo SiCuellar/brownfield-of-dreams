@@ -66,7 +66,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "personal_project_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
-  # config.action_mailer.default_url_options = { :host => "https://polar-castle-33210.herokuapp.com/" }
+  config.action_mailer.default_url_options = { :host => ENV["URL"] }
   # config.action_mailer.smtp_settings = { :address => "https://polar-castle-33210.herokuapp.com/", :port => 587 }
 
   config.action_mailer.delivery_method = :smtp
@@ -80,9 +80,6 @@ Rails.application.configure do
    authentication:       'plain',
    enable_starttls_auto: true
  }
-
-
-
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
