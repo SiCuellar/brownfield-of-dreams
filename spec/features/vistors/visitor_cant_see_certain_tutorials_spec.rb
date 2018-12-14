@@ -7,7 +7,6 @@ RSpec.describe 'Visitor' do
     tutorial_2 = create(:tutorial, classroom: false)
 
     visit root_path
-    save_and_open_page
     expect(page).to have_content(tutorial_2.title)
     expect(page).to_not have_content(tutorial_1.title)
   end
